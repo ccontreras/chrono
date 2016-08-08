@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        window.onload = function() {
+            var chrono = new Chrono();
+
+            chrono.notifyOn("00:00:05", function(keep) {
+                console.log('hello world');
+                return true;
+            });
+
+            chrono.notifyOn("00:00:07", function() {
+                console.log('hello world 2');
+                return false;
+            });
+
+            chrono.notifyOn("00:00:10", function() {
+                console.log('hello world 2');
+                return true;
+            });
+
+            chrono.start();
+        }
+    </script>
+    <script src="src/chrono.js"></script>
+</body>
+</html>
