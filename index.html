@@ -8,9 +8,17 @@
 </head>
 <body>
 
+    <div id="chrono"></div>
+
     <script>
         window.onload = function() {
-            var chrono = new Chrono();
+            var options = {
+                ondraw: function(what) {
+                    document.getElementById('chrono').innerHTML = what;
+                }
+            };
+
+            var chrono = new Chrono(options);
 
             chrono.notifyOn("00:00:05", function(keep) {
                 console.log('hello world');

@@ -6,6 +6,11 @@ function Chrono(options) {
     this.minutes = 0;
     this.seconds = 0;
     this.hours   = 0;
+    this.ondraw  = function(what) {};
+
+    if (options !== undefined && (options.ondraw !== undefined && typeof options.ondraw === 'function')) {
+        this.ondraw = options.ondraw;
+    }
 
     var flag      = true;
     var listeners = [];
@@ -107,7 +112,7 @@ function Chrono(options) {
     }
 
     function draw(what) {
-        console.log(what);
+        this.ondraw(what);
     }
 
     function formatInterval(data) {
